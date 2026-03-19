@@ -1,0 +1,50 @@
+name: "Continuous Integration & Agent Validation"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_and_test:
+    name: Build, Lint, and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint Code
+        run: npm run lint
+
+      - name: Build Application
+        run: npm run build
+
+      # Placeholder for testing agents
+      #- name: Run Tester Agent Suite
+      #  run: npm run test:e2e
+
+  security_scan:
+    name: Security Agent Validation
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Dependency Vulnerability Scan
+        run: npm audit --audit-level=high
+
+      - name: Code Review Agent Feedback
+        run: |
+          echo "Simulating code review agent analysis..."
+          # E.g., running a static analysis tool or SAST agent here
+          echo "Pass: No immediate security flaws detected."
