@@ -9,64 +9,66 @@ This document serves as the ground truth and working context for all AI agents, 
 This repository is an **Agentic SEO and Visibility Engine**. It is a reusable tool that points at *existing* target repositories (e.g., Next.js landing pages), analyzes them, and automatically improves their online discoverability (search engines, web bots, social networks).
 
 The ultimate goal of this engine is to:
-1. Fetch and clone an existing, external target codebase (via GitHub API/Token).
-2. Use specialized sub-agents to analyze the code for SEO deficiencies, speed, and social media readiness.
-3. Automatically generate a dynamic `site.config.js` and inject it into the target repository via a Pull Request.
-4. If required, automatically implement changes (like adding Open Graph tags, fixing `robots.txt`, or restructuring `layout.tsx`) on the target repository.
-5. Provide a "score" or list of tasks to the user, tracking progress within our own Linear workspace.
+1. Fetch and clone an existing, external target codebase.
+2. Use specialized sub-agents equipped with OpenCode Skills to analyze the code for SEO deficiencies, speed, and social media readiness.
+3. Automatically generate configurations, layout updates, or metadata injections for the target repository.
+4. Open PRs or create Linear tasks for the target project to implement the suggested improvements.
 
-## The Agent Team (Building the Engine)
+## The Agent Team and OpenCode Skills
 
-The following agents (or roles assumed by OpenCode and other LLMs) are collaborating to build this Engine. Each agent focuses on a specific part of the engine's architecture:
+To build and operate this engine, we use OpenCode and its built-in `skill` tool. Each agent role represents a distinct capability that will eventually be codified into an OpenCode Skill (`.opencode/skills/<skill-name>/SKILL.md`).
 
 ### 1. The Orchestrator Agent (The Manager)
-* **Role:** Parses incoming requests for a new target repository, coordinates the sub-agents, and tracks the engine's progress in Linear.
+* **Role:** Parses incoming requests for a target repository and coordinates the workflow.
+* **Skill Target:** `orchestrate-seo-engine`
 * **Responsibilities:**
-    * Generating prompts and context for the specialized sub-agents when a target repo is analyzed.
-    * Ensuring sub-agents execute tasks in the correct sequence (Analyze -> Propose -> Open PR).
-    * Creating and managing Linear issues for the engine's own development roadmap.
+    * Coordinates the execution of specialized skills.
+    * Manages Linear tasks to track the progress of the analysis.
+    * Triggers PR creation when sub-agent analysis is complete.
 
 ### 2. Specialized Sub-Agents
 
 **A. Researcher Agent (The SEO Brain)**
 * **Role:** Analyzes the target website's content and industry.
+* **Skill Target:** `seo-researcher`
 * **Responsibilities:**
     * Web search for competitor analysis and keyword research.
-    * Decides what values should fill the `templates/site.config.template.js` for the target repo.
-    * Defines target demographics and social media platforms.
+    * Defines target demographics and required metadata variables.
 
 **B. Frontend Agent (The Injector)**
 * **Role:** Analyzes the target codebase's frontend framework (currently Next.js).
+* **Skill Target:** `frontend-injector`
 * **Responsibilities:**
-    * Understands the target repository's structure (`app/layout.tsx`, `pages/_document.js`, etc.).
-    * Generates the code required to inject the dynamic SEO meta tags and imports the `site.config.js` properly into the target.
+    * Analyzes target structure (e.g., `app/layout.tsx`).
+    * Generates code diffs to inject dynamic SEO meta tags and Open Graph data.
 
 **C. Backend & Database Agent (The Automator)**
-* **Role:** Builds the social media and bot automation features of the Engine (Phase 2).
+* **Role:** Builds social media and bot automation features (Phase 2).
+* **Skill Target:** `social-automator`
 * **Responsibilities:**
-    * Creates the logic that uses APIs to publish SEO-optimized comments to forums/Reddit.
-    * Creates the logic to auto-post generated content to Instagram if the target config enables it.
+    * Handles APIs to publish SEO comments or auto-post images.
 
 **D. Tester Agent**
 * **Role:** Ensures the *Engine itself* works correctly.
+* **Skill Target:** `engine-tester`
 * **Responsibilities:**
-    * Writes unit and E2E tests for the engine's PR-generation logic and API interactions.
-    * Operates in a Test-Driven Development (TDD) loop.
+    * Validates that the engine outputs correct PR structures and config files.
 
 **E. Security Agent**
-* **Role:** Ensures the Engine handles external GitHub tokens and user data securely.
+* **Role:** Ensures the Engine handles external tokens securely.
+* **Skill Target:** `security-auditor`
 * **Responsibilities:**
-    * Audits the engine's code for vulnerabilities (SAST).
-    * Prevents credentials from leaking into logs or PRs.
+    * Prevents secrets from leaking into logs or PRs during target analysis.
 
 **F. Code Review Agent**
-* **Role:** Ensures the code written for the Engine is high quality and maintainable.
+* **Role:** Reviews code changes on the target repo before the PR is opened.
+* **Skill Target:** `code-reviewer`
 * **Responsibilities:**
-    * Reviews all code changes made to this repository before they are merged.
+    * Checks the proposed SEO injections for syntax errors or anti-patterns.
+
+## Skill Development Strategy
+As we build out this engine, we will create folders in `.opencode/skills/` corresponding to the Skill Targets listed above. Each folder will contain a `SKILL.md` file that explicitly instructs OpenCode on how to perform that specific analysis or injection task.
 
 ## Communication & Task Management
 * **Linear Workspace:** We use Linear to track the roadmap and issues for building this Engine. The Orchestrator will create and update issues (e.g., in the "WORKER" team).
-* **DevOps / Actions:** Continuous integration and deployment logic will be handled later by a specialized DevOps agent. For now, the focus is pure architectural scaffolding and script development.
-
-## Core Templates
-* `templates/site.config.template.js`: The blueprint for the SEO configuration that the engine will dynamically populate and push to target repositories.
+* **DevOps / Actions:** Continuous integration and deployment logic will be handled in a later phase.
