@@ -33,6 +33,14 @@ Idea → Clarify → Challenge → Define → Roadmap → Tickets
 > Activate the clarify skill. I want to clarify my idea for [your idea]
 ```
 
+## Examples
+
+See [examples/showcase](./examples/showcase/contact-form-example.md) for a complete walkthrough of building a feature with the framework.
+
+---
+
+## The Flow
+
 ## The Flow
 
 ### Phase 1: Planning
