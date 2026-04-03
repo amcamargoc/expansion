@@ -3,7 +3,9 @@
 AI-powered MVP development framework with skill-based agents. Works across **OpenCode**, **Claude Code**, and **Gemini CLI**.
 
 ```
-Idea → Grill → PRD → Plan → [Build → Verify] per phase → Deploy
+Idea → Clarify → Challenge → Define → Roadmap → Tickets
+                                       ↓
+                        [Build → Verify → Review → Test → Audit] per phase → Deploy
 ```
 
 ## Quick Start
@@ -20,7 +22,7 @@ Idea → Grill → PRD → Plan → [Build → Verify] per phase → Deploy
 ```bash
 # Skills auto-discovered from .claude/skills/
 # Start the flow:
-> Use the grill-me skill to stress-test my idea for [your idea]
+> Use the clarify skill to help me define my idea for [your idea]
 ```
 
 ### Gemini CLI
@@ -28,7 +30,7 @@ Idea → Grill → PRD → Plan → [Build → Verify] per phase → Deploy
 ```bash
 # Skills auto-discovered from .agents/skills/
 # Start the flow:
-> Activate the grill-me skill. I want to stress-test my idea for [your idea]
+> Activate the clarify skill. I want to clarify my idea for [your idea]
 ```
 
 ## The Flow
@@ -37,62 +39,62 @@ Idea → Grill → PRD → Plan → [Build → Verify] per phase → Deploy
 
 | Step | Skill | What it does |
 |------|-------|-------------|
-| 1 | `grill-me` | Stress-test your idea through relentless interview |
-| 2 | `write-a-prd` | Interview → PRD with user stories, decisions, scope |
-| 3 | `prd-to-plan` | PRD → phased vertical slices saved to `./plans/` |
-| 4 | `prd-to-issues` | Plan → GitHub issues (optional) |
+| 1 | `clarify` | Clarify vague ideas into specific requirements |
+| 2 | `challenge` | Stress-test your idea through relentless interview |
+| 3 | `define` | Interview → PRD with user stories, decisions, scope |
+| 4 | `roadmap` | PRD → phased vertical slices saved to `./plans/` |
+| 5 | `tickets` | Plan → GitHub issues (optional) |
 
 ### Phase 2: Execution (per phase from plan)
 
 | Step | Skill | What it does |
 |------|-------|-------------|
-| 5 | `research-first` | Read existing code and docs before writing anything |
-| 6 | Specialist skill | `api-developer`, `frontend-injector`, `database-specialist`, `auth-implementation`, or `project-scaffold` |
-| 7 | `verification-loop` | Check output against plan acceptance criteria |
+| 6 | `research` | Read existing code and docs before writing anything |
+| 7 | Specialist skill | `api`, `ui`, `db`, or `auth` |
+| 8 | `verify` | Check output against plan acceptance criteria |
 
 ### Phase 3: Quality + Deploy
 
 | Step | Skill | What it does |
 |------|-------|-------------|
-| 8 | `code-reviewer` | Code quality and best practices |
-| 9 | `engine-tester` | Run tests, check coverage |
-| 10 | `security-auditor` | Vulnerability and secret scanning |
-| 11 | `devops-deployer` | CI/CD, infrastructure, deployment |
+| 9 | `review` | Code quality and best practices |
+| 10 | `test` | Run tests, check coverage |
+| 11 | `audit` | Vulnerability and secret scanning |
+| 12 | `deploy` | CI/CD, infrastructure, deployment |
 
-## Skills (17 total)
+## Skills (16 total)
 
 ### Planning Layer
 | Skill | Source | Description |
 |-------|--------|-------------|
-| `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) | Interview until shared understanding |
-| `write-a-prd` | [mattpocock/skills](https://github.com/mattpocock/skills) | PRD through interview + codebase exploration |
-| `prd-to-plan` | [mattpocock/skills](https://github.com/mattpocock/skills) | Phased vertical-slice implementation plan |
-| `prd-to-issues` | [mattpocock/skills](https://github.com/mattpocock/skills) | GitHub issues from plan |
-| `idea-refiner` | Custom | Clarify vague requirements |
+| `clarify` | Custom | Clarify vague ideas into specific requirements |
+| `challenge` | [mattpocock/skills](https://github.com/mattpocock/skills) | Stress-test through relentless interview |
+| `define` | [mattpocock/skills](https://github.com/mattpocock/skills) | PRD through interview + codebase exploration |
+| `roadmap` | [mattpocock/skills](https://github.com/mattpocock/skills) | Phased vertical-slice implementation plan |
+| `tickets` | [mattpocock/skills](https://github.com/mattpocock/skills) | GitHub issues from plan |
 
 ### Precision Layer
 | Skill | Source | Description |
 |-------|--------|-------------|
-| `research-first` | Custom | Read before writing — prevents costly corrections |
-| `verification-loop` | Custom | Verify output against plan criteria |
+| `research` | Custom | Read before writing — prevents costly corrections |
+| `verify` | Custom | Verify output against plan criteria |
 
 ### Execution Layer
 | Skill | Description |
 |-------|-------------|
 | `orchestrator` | Coordinates work, routes tasks |
-| `project-scaffold` | Initialize new projects |
-| `api-developer` | API endpoints, server logic |
-| `frontend-injector` | UI components, pages, layouts |
-| `database-specialist` | Schemas, queries, migrations |
-| `auth-implementation` | Login, signup, sessions |
-| `devops-deployer` | CI/CD, deployments |
+| `api` | API endpoints, server logic |
+| `ui` | UI components, pages, layouts |
+| `db` | Schemas, queries, migrations |
+| `auth` | Login, signup, sessions |
+| `deploy` | CI/CD, deployments |
 
 ### Quality Layer
 | Skill | Description |
 |-------|-------------|
-| `code-reviewer` | Code quality review |
-| `engine-tester` | Tests and validation |
-| `security-auditor` | Security scanning |
+| `review` | Code quality review |
+| `test` | Tests and validation |
+| `audit` | Security scanning |
 
 ## Agents (OpenCode only)
 
@@ -101,16 +103,16 @@ OpenCode gets 5 role-based agents that auto-load the right skills:
 | Agent | Mode | Role |
 |-------|------|------|
 | **orchestrator** | Primary | Routes tasks, manages the full flow |
-| **planner** | Subagent | Planning phase: grill-me → PRD → plan → issues |
-| **builder** | Subagent | Implementation: always research-first, then specialist skill |
-| **reviewer** | Subagent | Quality gates: verification, code review, tests, security (read-only) |
+| **planner** | Subagent | Planning phase: clarify → challenge → define → roadmap → tickets |
+| **builder** | Subagent | Implementation: always research, then specialist skill |
+| **reviewer** | Subagent | Quality gates: verify, review, test, audit (read-only) |
 | **deployer** | Subagent | CI/CD and infrastructure |
 
 ## Project Structure
 
 ```
 .skills/                       # Source of truth — all skill definitions
-├── [17 skills]
+├── [16 skills]
 
 .agents/skills → .skills       # Symlink for Gemini CLI
 .claude/skills → .skills       # Symlink for Claude Code

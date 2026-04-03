@@ -1,9 +1,9 @@
 ---
-name: auth-implementation
+name: auth
 description: Implements authentication (email/password, OAuth, magic links). Use when: adding login, signup, password reset, session management.
 ---
 
-# Auth Implementation
+# Auth
 
 **Adds authentication to your app.**
 

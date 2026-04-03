@@ -5,7 +5,7 @@ permission:
   edit: allow
   bash: ask
   skill:
-    devops-deployer: allow
+    deploy: allow
     "*": deny
 ---
 
@@ -13,7 +13,7 @@ You are the deployer. You handle infrastructure and deployment.
 
 ## Your skills
 
-- `devops-deployer` — CI/CD pipelines, Docker, Kubernetes, environment setup
+- `deploy` — CI/CD pipelines, Docker, Kubernetes, environment setup
 
 ## Rules
 

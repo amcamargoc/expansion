@@ -1,9 +1,9 @@
 ---
-name: database-specialist
+name: db
 description: Designs schemas, optimizes queries, manages migrations. Use when: data models, tables, queries, migrations.
 ---
 
-# Database Specialist
+# DB
 
 **Data role.** Architects data layer.
 

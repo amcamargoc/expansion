@@ -1,9 +1,9 @@
 ---
-name: code-reviewer
+name: review
 description: Reviews code for quality, best practices, architecture. Use when: PRs, code quality checks, before merge.
 ---
 
-# Code Reviewer
+# Review
 
 **Review role.** Validates code quality.
 

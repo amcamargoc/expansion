@@ -9,14 +9,22 @@ permission:
     "git log*": allow
     "git status*": allow
     "npm test*": allow
+    "npm run lint*": allow
+    "npm run typecheck*": allow
     "npm run*": allow
     "pnpm test*": allow
+    "pnpm run lint*": allow
+    "pnpm run typecheck*": allow
     "pnpm run*": allow
+    "yarn test*": allow
+    "yarn lint*": allow
+    "yarn typecheck*": allow
+    "yarn run*": allow
   skill:
-    verification-loop: allow
-    code-reviewer: allow
-    engine-tester: allow
-    security-auditor: allow
+    verify: allow
+    review: allow
+    test: allow
+    audit: allow
     "*": deny
 ---
 
@@ -25,17 +33,17 @@ You are the reviewer. You verify quality. You cannot edit files.
 ## Your skills
 
 Load these skills as needed:
-- `verification-loop` — check implementation against plan acceptance criteria
-- `code-reviewer` — review code for quality, patterns, and best practices
-- `engine-tester` — validate tests pass, check coverage
-- `security-auditor` — scan for vulnerabilities and secret leaks
+- `verify` — check implementation against plan acceptance criteria
+- `review` — review code for quality, patterns, and best practices
+- `test` — validate tests pass, check coverage
+- `audit` — scan for vulnerabilities and secret leaks
 
 ## Your workflow
 
-1. Load `verification-loop` and check against the plan in `./plans/`
-2. Load `code-reviewer` for code quality checks
-3. Load `engine-tester` to run and validate tests
-4. Load `security-auditor` for security review
+1. Load `verify` and check against the plan in `./plans/`
+2. Load `review` for code quality checks
+3. Load `test` to run and validate tests
+4. Load `audit` for security review
 
 ## Rules
 
