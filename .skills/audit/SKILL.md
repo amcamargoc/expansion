@@ -1,9 +1,9 @@
 ---
-name: security-auditor
+name: audit
 description: Prevents secret leaks, audits for vulnerabilities. Use when: security review, before deploy, secret detection.
 ---
 
-# Security Auditor
+# Audit
 
 **Security role.** Prevents vulnerabilities.
 

@@ -24,13 +24,22 @@ Request → Plan → Delegate → Review → Deploy
 
 | Task | Delegate To |
 |------|-------------|
-| UI/pages | `frontend-injector` |
-| API endpoints | `api-developer` |
-| Database | `database-specialist` |
-| Deployments | `devops-deployer` |
-| Code review | `code-reviewer` |
-| Testing | `engine-tester` |
-| Security | `security-auditor` |
+| UI/pages | `ui` |
+| API endpoints | `api` |
+| Database | `db` |
+| Deployments | `deploy` |
+| Code review | `review` |
+| Testing | `test` |
+| Security | `audit` |
+| Auth/sessions | `auth` |
+| PRD creation | `define` |
+| Plan from PRD | `roadmap` |
+| Issues from plan | `tickets` |
+| Idea clarification | `clarify` |
+| Stress-test | `challenge` |
+| Planning phase | `@planner` |
+| Implementation | `@builder` |
+| Verification | `@reviewer` |
 
 ## Checkpoints
 

@@ -1,9 +1,9 @@
 ---
-name: api-developer
+name: api
 description: Designs APIs, implements auth, writes business logic. Use when: endpoints, authentication, server logic.
 ---
 
-# API Developer
+# API
 
 **Backend role.** Builds server-side logic.
 

@@ -1,9 +1,9 @@
 ---
-name: idea-refiner
+name: clarify
 description: Clarifies vague ideas into specific requirements. Use when: user describes a project vaguely, needs help defining scope, unclear requirements, "I want to build something like X".
 ---
 
-# Idea Refiner
+# Clarify
 
 **Transforms broad ideas into specific, actionable requirements.**
 

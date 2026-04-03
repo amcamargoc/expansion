@@ -1,9 +1,9 @@
 ---
-name: engine-tester
+name: test
 description: Validates outputs, runs tests, blocks bad commits. Use when: testing, validation, before merge.
 ---
 
-# Engine Tester
+# Test
 
 **QA role.** Ensures quality.
 

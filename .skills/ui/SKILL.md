@@ -1,9 +1,9 @@
 ---
-name: frontend-injector
+name: ui
 description: Builds UI components, pages, responsive layouts. Use when: new pages, components, layouts, styling.
 ---
 
-# Frontend Injector
+# UI
 
 **UI role.** Builds user interfaces.
 

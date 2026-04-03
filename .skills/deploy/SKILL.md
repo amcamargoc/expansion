@@ -1,9 +1,9 @@
 ---
-name: devops-deployer
+name: deploy
 description: Sets up CI/CD, manages deployments, configures infrastructure. Use when: deployments, CI/CD, environment setup.
 ---
 
-# DevOps Deployer
+# Deploy
 
 **DevOps role.** Manages deployments.
 

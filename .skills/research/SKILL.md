@@ -1,9 +1,9 @@
 ---
-name: research-first
+name: research
 description: Read and search before writing any code. Prevents hallucinations and costly corrections. Use when starting any implementation task.
 ---
 
-# Research First
+# Research
 
 Before writing any code, complete these steps. Do not skip them.
 

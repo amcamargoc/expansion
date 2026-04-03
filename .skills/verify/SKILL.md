@@ -1,9 +1,9 @@
 ---
-name: verification-loop
+name: verify
 description: Verify implementation output against plan acceptance criteria. Catches errors early. Use after completing a phase or task to validate before moving on.
 ---
 
-# Verification Loop
+# Verify
 
 After completing a phase or task, verify the output before moving on. Do not skip this step.
 
